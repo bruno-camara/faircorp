@@ -50,13 +50,18 @@ public class RoomController {
         }
         else {
             room = roomDao.getReferenceById(dto.getId());  // (9)
+            room.setName(dto.getName());
             room.setFloor(dto.getFloor());
+            room.setCurrentTemperature(dto.getCurrentTemperature());
+            room.setTargetTemperature(dto.getTargetTemperature());
         }
         return new RoomDto(room);
     }
 
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Long id) {
+        windowDao.deleteWindowsByRoom(id);
+        heaterDao.deleteHeaterByRoom(id);
         roomDao.deleteById(id);
     }
     
