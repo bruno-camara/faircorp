@@ -38,6 +38,13 @@ public class Room {
         this.name = name;
     }
 
+    public Room(String name, Integer floor, Double currentTemperature, Double targetTemperature) {
+        this.floor = floor;
+        this.name = name;
+        this.currentTemperature = currentTemperature;
+        this.targetTemperature = targetTemperature;
+    }
+
     public Room(String name, Integer floor, Double currentTemperature, Double targetTemperature, Building building){
         this.floor = floor;
         this.name = name;

@@ -6,6 +6,7 @@ import com.emse.spring.faircorp.dao.WindowDao;
 import com.emse.spring.faircorp.dto.RoomDto;
 import com.emse.spring.faircorp.dto.WindowDto;
 import com.emse.spring.faircorp.model.Heater;
+import com.emse.spring.faircorp.model.Room;
 import com.emse.spring.faircorp.model.Window;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +38,21 @@ public class RoomController {
     @GetMapping(path = "/{id}")
     public RoomDto findById(@PathVariable Long id) {
         return roomDao.findById(id).map(RoomDto::new).orElse(null); // (7)
+    }
+
+    // Create Room
+    @PostMapping // (8)
+    public RoomDto create(@RequestBody RoomDto dto) {
+        Room room = null;
+        // On creation id is not defined
+        if (dto.getId() == null) {
+            room = roomDao.save(new Room(dto.getName(), dto.getFloor(), dto.getCurrentTemperature(), dto.getTargetTemperature()));
+        }
+        else {
+            room = roomDao.getReferenceById(dto.getId());  // (9)
+            room.setFloor(dto.getFloor());
+        }
+        return new RoomDto(room);
     }
 
     @DeleteMapping(path = "/{id}")
