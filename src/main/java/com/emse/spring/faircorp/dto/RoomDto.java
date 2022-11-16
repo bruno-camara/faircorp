@@ -1,14 +1,6 @@
 package com.emse.spring.faircorp.dto;
 
-import com.emse.spring.faircorp.model.Building;
-import com.emse.spring.faircorp.model.Heater;
 import com.emse.spring.faircorp.model.Room;
-import com.emse.spring.faircorp.model.Window;
-
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import java.util.List;
 
 public class RoomDto {
 
@@ -17,8 +9,7 @@ public class RoomDto {
     private String name;
     private Double currentTemperature;
     private Double targetTemperature;
-    private List<HeaterDto> heaters;
-    private List<WindowDto> windows;
+
     private Long buildingId;
 
     public RoomDto(){
@@ -30,9 +21,7 @@ public class RoomDto {
         this.name = room.getName();
         this.currentTemperature = room.getCurrentTemperature();
         this.targetTemperature = room.getTargetTemperature();
-//        this.heaters = room.getHeaters();
-//        this.windows = room.getWindows();
-        this.buildingId = room.getBuilding().getId();
+        //this.buildingId = room.getBuilding().getId();
     }
 
     public Long getId() { return id; }
@@ -59,12 +48,6 @@ public class RoomDto {
         this.targetTemperature = targetTemperature;
     }
 
-    public List<HeaterDto> getHeaters() { return heaters; }
-
-    public void setHeaters(List<HeaterDto> heaters) { this.heaters = heaters; }
-
-    public List<WindowDto> getWindows() { return windows; }
-
-    public void setWindows(List<WindowDto> windows) { this.windows = windows; }
+    //public Long getBuildingId() { return buildingId; }
 
 }
