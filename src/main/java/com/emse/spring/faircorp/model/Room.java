@@ -85,9 +85,13 @@ public class Room {
         return windows;
     }
 
+    public void setWindows(List<Window> windows){ this.windows = windows; }
+
     public List<Heater> getHeaters() {
         return heaters;
     }
+
+    public void setHeaters(List<Heater> heaters) { this.heaters = heaters; }
 
     public Building getBuilding() { return building; }
 }
