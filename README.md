@@ -23,3 +23,7 @@ To regular users:
 The application is deployed using a cloud service called Clever Cloud.
 
 The following link leads to the app: https://faircorp-bruno-camara.cleverapps.io
+
+## API Structure
+To check the API structure, click on the following link:
+https://faircorp-bruno-camara.cleverapps.io/swagger-ui/index.html#/
