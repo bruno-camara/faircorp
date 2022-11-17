@@ -50,7 +50,7 @@ public class SpringSecurityConfig {
     public SecurityFilterChain filterChain2(HttpSecurity http) throws Exception {
         return http
                 .antMatcher("/api/**") // (2)
-                .authorizeRequests(authorize -> authorize.anyRequest().hasRole("ADMIN")) // (3)
+                .authorizeRequests(authorize -> authorize.anyRequest().hasRole(ROLE_ADMIN)) // (3)
                 .formLogin(withDefaults())
                 .httpBasic(withDefaults())
                 .build();
