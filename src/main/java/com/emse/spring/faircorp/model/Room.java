@@ -33,9 +33,10 @@ public class Room {
     public Room() {
     }
 
-    public Room(String name, Integer floor) {
+    public Room(String name, Integer floor, Building building) {
         this.floor = floor;
         this.name = name;
+        this.building = building;
     }
 
     public Room(String name, Integer floor, Double currentTemperature, Double targetTemperature) {

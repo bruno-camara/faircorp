@@ -48,6 +48,6 @@ public class RoomDto {
         this.targetTemperature = targetTemperature;
     }
 
-    //public Long getBuildingId() { return buildingId; }
+//    public Long getBuildingId() { return buildingId; }
 
 }
