@@ -24,6 +24,14 @@ The application is deployed using a cloud service called Clever Cloud.
 
 The following link leads to the app: https://faircorp-bruno-camara.cleverapps.io
 
+### Local deployment
+You can also run it locally using Docker, using the following commands:
+```bash
+docker build --build-arg JAR_FILE=build/libs/faircorp-0.0.1-SNAPSHOT.jar -t springio/gs-spring-boot-docker .
+
+docker run -p 8080:8080 springio/gs-spring-boot-docker
+```
+
 ## API Structure
 To check the API structure, click on the following link:
 https://faircorp-bruno-camara.cleverapps.io/swagger-ui/index.html#/
