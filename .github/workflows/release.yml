@@ -43,10 +43,17 @@ jobs:
     needs: build_test
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Create a Release
-      uses: elgohr/Github-Release-Action@v4
-      env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-      with:
-        title: AutomaticRelease
+      - uses: actions/checkout@v2
+      - name: Retrieve saved artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: artifact
+          path: "./artifacts"
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: "./artifacts"
+      - name: Create Release
+        id: create_release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "./artifacts/build/libs/*, ./artifacts/docs/*"
