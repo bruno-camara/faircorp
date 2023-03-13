@@ -5,7 +5,7 @@ name: "Release"
 on: # yamllint disable-line rule:truthy
   push:
     tags:
-      - "**"
+      - "*"
 
 jobs:
   test_build:
