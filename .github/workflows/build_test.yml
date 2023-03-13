@@ -9,9 +9,8 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    # only trigger on branches, not on tags
+    branches: '**'
 
 permissions:
   contents: read
@@ -32,3 +31,9 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
+    - name: Unit Tests with Gradle
+      run: |
+          for commit in $(git rev-list ${{ github.event.before}}..${{ github.sha}}); do
+              git checkout $commit
+              ./gradlew test
+          done
