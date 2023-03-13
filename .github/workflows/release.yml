@@ -48,6 +48,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Create Release
+        run: echo -e "changelog=**Changes in this Release**\n$(git log --pretty=format:'* %s' $(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))..$(git describe --tags --abbrev=0))" >> $GITHUB_ENV
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -55,9 +56,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
+          body: ${{ env.changelog }}
           draft: false
           prerelease: false
