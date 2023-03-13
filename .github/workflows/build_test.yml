@@ -32,8 +32,4 @@ jobs:
       with:
         arguments: build
     - name: Unit Tests with Gradle
-      run: |
-          for commit in $(git rev-list ${{ github.event.before}}..${{ github.sha}}); do
-              git checkout $commit
-              ./gradlew test
-          done
+      run: ./gradlew test
