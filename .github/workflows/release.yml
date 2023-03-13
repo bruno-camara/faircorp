@@ -35,7 +35,8 @@ jobs:
   create_releases:
     name: "Create Release"
     
-    permissions: write-all
+    permissions:
+      contents: write
 
     runs-on: "ubuntu-latest"
     
