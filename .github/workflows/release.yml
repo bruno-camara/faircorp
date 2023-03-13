@@ -33,7 +33,9 @@ jobs:
       run: ./gradlew test
           
   create_releases:
-    name: "Release"
+    name: "Create Release"
+    
+    permissions: write-all
 
     runs-on: "ubuntu-latest"
     
