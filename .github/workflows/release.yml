@@ -51,8 +51,8 @@ jobs:
           ref: ${{ github.event.push.tag.head.sha }}
           fetch-depth: 1
       - uses: actions/checkout@v3
-      - name: Take ownership of the checkout directory (Git CVE-2022-24765)
-        run: chown --recursive --reference=/ .
+      - name: Allow for file ownership conflicts with Docker and GitHub Actions
+        run: git config --global --add safe.directory '*'
       - name: Create Changelog
         run: echo -e "changelog=**Changes in this Release**\n$(git log --pretty=format:'* %s' $(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))..$(git describe --tags --abbrev=0))" >> $GITHUB_ENV
       - name: Create Release
